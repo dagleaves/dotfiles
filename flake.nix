@@ -22,9 +22,15 @@
       url = "github:kunchenguid/treehouse";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # terminal multiplexer - not in nixpkgs, packaged by its own flake
+    herdr = {
+      url = "github:ogulcancelik/herdr/v0.7.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse, herdr }:
     let
       system = "x86_64-linux";
 

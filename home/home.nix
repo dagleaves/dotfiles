@@ -43,6 +43,9 @@ in
 
     # not in nixpkgs, packaged by its own flake
     inputs.treehouse.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # terminal multiplexer, not in nixpkgs, packaged by its own flake
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionPath = [
@@ -233,6 +236,10 @@ in
   # Neovim config, edited in place: the whole directory lives in this repo.
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+
+  # herdr config, edited in place: the whole directory lives in this repo.
+  home.file.".config/herdr".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
 
   # Shared agent instructions, edited in place: one file in the repo, symlinked
   # into every agent CLI's expected location.
