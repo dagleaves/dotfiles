@@ -1,7 +1,7 @@
 # User-level config shared by every machine (NixOS desktop/laptop and WSL).
 # On NixOS this is loaded as a home-manager module from flake.nix; on WSL it
 # is applied standalone with `home-manager switch`.
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
@@ -36,6 +36,10 @@ in
 
     # so `home-manager switch` works on WSL after bootstrap
     home-manager
+
+    # zsh prompt plugin, from its own flake (not in nixpkgs); activated in
+    # zsh initContent below
+    inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionPath = [

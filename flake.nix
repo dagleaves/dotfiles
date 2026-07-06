@@ -11,9 +11,15 @@
     # Determinate Nix on NixOS, so the Nix daemon behaves the same as the
     # Determinate installer used on WSL / other distros.
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
+    # zsh prompt plugin - not in nixpkgs, packaged by its own flake
+    zsh-patina = {
+      url = "github:michel-kraemer/zsh-patina";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina }:
     let
       system = "x86_64-linux";
 
@@ -36,6 +42,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.${username} = import ./home/home.nix;
           }
         ];
@@ -62,6 +69,7 @@
           config.allowUnfree = true;
           overlays = [ unstableOverlay ];
         };
+        extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home/home.nix
           {

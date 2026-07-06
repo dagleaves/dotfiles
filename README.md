@@ -105,5 +105,6 @@ change them by editing `home/home.nix` and rebuilding.
   `libcublas`.
 - `~/.claude/` (Claude Code settings) is intentionally not managed yet —
   add a `mkOutOfStoreSymlink` in `home/home.nix` later if wanted.
-- `zsh-patina` is only activated if the binary exists on the machine
-  (it isn't packaged in nixpkgs).
+- `zsh-patina` isn't in nixpkgs; it comes from its own flake input
+  (`github:michel-kraemer/zsh-patina`) and is installed via `home.packages`,
+  then activated in the generated `.zshrc`.

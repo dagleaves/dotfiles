@@ -259,7 +259,28 @@
         "determinate": "determinate",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "zsh-patina": "zsh-patina"
+      }
+    },
+    "zsh-patina": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782989899,
+        "narHash": "sha256-4c7jpWqdqOslXv9D6v1/E9+dRUUtd7xJtNCHlXfZCtc=",
+        "owner": "michel-kraemer",
+        "repo": "zsh-patina",
+        "rev": "5a0f7889343c1c14ca2b49372a973c7975033e40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "michel-kraemer",
+        "repo": "zsh-patina",
+        "type": "github"
       }
     }
   },
