@@ -40,6 +40,9 @@ in
     # zsh prompt plugin, from its own flake (not in nixpkgs); activated in
     # zsh initContent below
     inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # not in nixpkgs, packaged by its own flake
+    inputs.treehouse.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionPath = [

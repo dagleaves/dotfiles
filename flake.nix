@@ -17,9 +17,14 @@
       url = "github:michel-kraemer/zsh-patina";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    treehouse = {
+      url = "github:kunchenguid/treehouse";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse }:
     let
       system = "x86_64-linux";
 
