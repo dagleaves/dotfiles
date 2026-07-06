@@ -8,5 +8,6 @@
     "typescript-lsp@claude-plugins-official": true
   },
   "tui": "fullscreen",
-  "autoCompactEnabled": false
+  "autoCompactEnabled": false,
+  "model": "claude-fable-5[1m]"
 }
