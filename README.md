@@ -18,6 +18,7 @@ configured the same way every time.
 - `home/home.nix` — user config shared everywhere: packages, git, zsh (oh-my-zsh + powerlevel10k + fzf-tab), tmux (rose-pine), neovim
 - `home/p10k.zsh` — the real powerlevel10k config; `~/.p10k.zsh` is a symlink into this repo, so `p10k configure` edits it in place
 - `home/wezterm.lua` — WezTerm config (rose-pine moon, Hack Nerd Font). `~/.wezterm.lua` symlinks into the repo; on WSL `rebuild.sh` additionally copies it to `C:\Users\<user>\.wezterm.lua`, since Windows WezTerm can't follow WSL symlinks
+- `home/claude/` — Claude Code `settings.json` and `statusline-command.sh`; `~/.claude/settings.json` and `~/.claude/statusline-command.sh` symlink into the repo, so changes made through Claude Code land here too
 - `bootstrap.sh` — first-time setup on a fresh machine
 - `rebuild.sh` — re-apply after any edit
 
@@ -91,6 +92,7 @@ The `update` shell alias runs the same script.
 | tmux: C-a prefix, vi copy-mode, rose-pine moon, vim-aware pane nav | `home/home.nix` (everywhere) |
 | git identity + aliases | `home/home.nix` (everywhere) |
 | wezterm config | `home/wezterm.lua` (symlinked on Linux, copied to Windows by `rebuild.sh` on WSL) |
+| Claude Code settings + statusline | `home/claude/` (symlinked everywhere) |
 
 oh-my-zsh, powerlevel10k, fzf-tab, and the tmux plugins all come from
 nixpkgs now — no more git-cloning into `~/.oh-my-zsh` or TPM. The generated
@@ -105,8 +107,6 @@ change them by editing `home/home.nix` and rebuilding.
 - The system's `nix.channel`-based unstable overlay became the
   `nixpkgs-unstable` flake input (`pkgs.unstable.*`), currently used for
   `libcublas`.
-- `~/.claude/` (Claude Code settings) is intentionally not managed yet —
-  add a `mkOutOfStoreSymlink` in `home/home.nix` later if wanted.
 - `zsh-patina` isn't in nixpkgs; it comes from its own flake input
   (`github:michel-kraemer/zsh-patina`) and is installed via `home.packages`,
   then activated in the generated `.zshrc`.

@@ -214,4 +214,12 @@ in
   # repo file to C:\Users\<user>\.wezterm.lua instead.
   home.file.".wezterm.lua".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/wezterm.lua";
+
+  # Claude Code settings and statusline script, edited in place: Claude
+  # writes to ~/.claude/settings.json directly, and these symlinks mean
+  # those changes land in the repo.
+  home.file.".claude/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/settings.json";
+  home.file.".claude/statusline-command.sh".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/statusline-command.sh";
 }
