@@ -226,6 +226,10 @@ in
   home.file.".claude/statusline-command.sh".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/statusline-command.sh";
 
+  # Neovim config, edited in place: the whole directory lives in this repo.
+  home.file.".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+
   # Shared agent instructions, edited in place: one file in the repo, symlinked
   # into every agent CLI's expected location.
   home.file.".claude/CLAUDE.md".source =
