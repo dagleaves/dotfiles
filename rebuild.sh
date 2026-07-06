@@ -11,5 +11,15 @@ if [ -f /etc/NIXOS ]; then
   HOST="${1:-desktop}"
   exec sudo nixos-rebuild switch --flake "$HOME/dotfiles#$HOST"
 else
-  exec home-manager switch --flake "$HOME/dotfiles#dgleaves@wsl"
+  home-manager switch --flake "$HOME/dotfiles#dgleaves@wsl"
+
+  # On WSL the terminal runs on the Windows side and can't follow WSL
+  # symlinks, so push the wezterm config to the Windows home directory.
+  if command -v cmd.exe >/dev/null 2>&1; then
+    WINHOME="$(wslpath "$(cd /mnt/c && cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')")"
+    if [ -d "$WINHOME" ]; then
+      cp "$DIR/home/wezterm.lua" "$WINHOME/.wezterm.lua"
+      echo "wezterm config copied to $WINHOME/.wezterm.lua"
+    fi
+  fi
 fi

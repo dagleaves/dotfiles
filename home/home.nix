@@ -208,4 +208,10 @@ in
   # at it (`p10k configure` writes straight through the symlink).
   home.file.".p10k.zsh".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/p10k.zsh";
+
+  # WezTerm reads ~/.wezterm.lua on NixOS. On WSL the terminal runs on the
+  # Windows side, which can't follow this symlink - rebuild.sh copies the
+  # repo file to C:\Users\<user>\.wezterm.lua instead.
+  home.file.".wezterm.lua".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/wezterm.lua";
 }

@@ -17,6 +17,7 @@ configured the same way every time.
 - `hosts/desktop/`, `hosts/laptop/` — per-machine config + `hardware-configuration.nix`
 - `home/home.nix` — user config shared everywhere: packages, git, zsh (oh-my-zsh + powerlevel10k + fzf-tab), tmux (rose-pine), neovim
 - `home/p10k.zsh` — the real powerlevel10k config; `~/.p10k.zsh` is a symlink into this repo, so `p10k configure` edits it in place
+- `home/wezterm.lua` — WezTerm config (rose-pine moon, Hack Nerd Font). `~/.wezterm.lua` symlinks into the repo; on WSL `rebuild.sh` additionally copies it to `C:\Users\<user>\.wezterm.lua`, since Windows WezTerm can't follow WSL symlinks
 - `bootstrap.sh` — first-time setup on a fresh machine
 - `rebuild.sh` — re-apply after any edit
 
@@ -89,6 +90,7 @@ The `update` shell alias runs the same script.
 | zsh: oh-my-zsh (git, docker, z), powerlevel10k, fzf-tab, autosuggestions, aliases | `home/home.nix` (everywhere) |
 | tmux: C-a prefix, vi copy-mode, rose-pine moon, vim-aware pane nav | `home/home.nix` (everywhere) |
 | git identity + aliases | `home/home.nix` (everywhere) |
+| wezterm config | `home/wezterm.lua` (symlinked on Linux, copied to Windows by `rebuild.sh` on WSL) |
 
 oh-my-zsh, powerlevel10k, fzf-tab, and the tmux plugins all come from
 nixpkgs now — no more git-cloning into `~/.oh-my-zsh` or TPM. The generated
