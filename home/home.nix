@@ -53,6 +53,10 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    # The repo's home/.config/nvim is symlinked in whole further down via
+    # home.file, so prevent home-manager's own generated init.lua (which
+    # only disables unused providers) from colliding with it.
+    initLua = lib.mkForce "";
   };
 
   programs.fzf = {

@@ -22,7 +22,6 @@
     cudaPackages.cuda_cudart
     unstable.cudaPackages.libcublas
     libGL
-    glibc
   ];
 
   programs.nix-ld.libraries = [

@@ -68,6 +68,7 @@
     nix-index
     vim
     git
+    glibc
   ];
 
   networking.firewall.enable = false;
