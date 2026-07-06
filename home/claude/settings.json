@@ -1,13 +1,27 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  },
+  "autoCompactEnabled": false,
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "tui": "fullscreen",
-  "autoCompactEnabled": false,
-  "model": "claude-fable-5[1m]"
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/home/dgleaves/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ]
+  },
+  "model": "claude-fable-5[1m]",
+  "statusLine": {
+    "command": "bash ~/.claude/statusline-command.sh",
+    "type": "command"
+  },
+  "tui": "fullscreen"
 }
