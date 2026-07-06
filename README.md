@@ -57,9 +57,15 @@ This also switches the machine onto Determinate Nix via the
 ### Validate without applying
 
 ```sh
-nix flake check --no-build
-nix build ~/dotfiles#nixosConfigurations.desktop.config.system.build.toplevel --dry-run
+# WSL / home-manager config
+nix build ~/dotfiles#homeConfigurations.'"dgleaves@wsl"'.activationPackage --dry-run
+
+# NixOS hosts (works once the real hardware-configuration.nix is in place)
+nix eval ~/dotfiles#nixosConfigurations.desktop.config.system.build.toplevel.drvPath
 ```
+
+`nix flake check` evaluates *every* host, so it fails with the placeholder
+message until both `hardware-configuration.nix` files are real.
 
 ## Daily use
 
