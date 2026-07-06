@@ -222,4 +222,13 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/settings.json";
   home.file.".claude/statusline-command.sh".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/statusline-command.sh";
+
+  # Shared agent instructions, edited in place: one file in the repo, symlinked
+  # into every agent CLI's expected location.
+  home.file.".claude/CLAUDE.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".codex/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".config/opencode/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }
