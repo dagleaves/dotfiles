@@ -9,7 +9,7 @@
       {
         "hooks": [
           {
-            "command": "bash '/home/dgleaves/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash '/home/danielg/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10,
             "type": "command"
           }
