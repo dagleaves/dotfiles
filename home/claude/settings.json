@@ -16,6 +16,16 @@
         ],
         "matcher": "*"
       }
+    ],
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workz sync --isolated --quiet"
+          }
+        ]
+      }
     ]
   },
   "model": "claude-fable-5[1m]",
