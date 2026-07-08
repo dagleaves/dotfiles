@@ -53,6 +53,18 @@
 
   virtualisation.docker.enable = true;
 
+  # Pin container DNS to Tailscale MagicDNS. Without this, containers
+  # snapshot /etc/resolv.conf at start; on boot Docker races tailscaled and
+  # can capture the pre-Tailscale fallback resolvers, breaking tailnet
+  # hostname resolution until the container is restarted.
+  virtualisation.docker.daemon.settings = {
+    dns = [
+      "100.100.100.100"
+      "1.1.1.1" # fallback so container DNS survives tailscaled being down
+    ];
+    dns-search = [ "tail0922b0.ts.net" ];
+  };
+
   # Lets non-nix binaries (e.g. pythons downloaded by uv) find their libraries.
   programs.nix-ld.enable = true;
   environment.localBinInPath = true;
