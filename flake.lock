@@ -94,6 +94,24 @@
         "url": "https://flakehub.com/f/hercules-ci/flake-parts/0.1"
       }
     },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "git-hooks-nix": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -283,7 +301,23 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "treehouse": "treehouse",
+        "workz": "workz",
         "zsh-patina": "zsh-patina"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     },
     "treehouse": {
@@ -303,6 +337,27 @@
       "original": {
         "owner": "kunchenguid",
         "repo": "treehouse",
+        "type": "github"
+      }
+    },
+    "workz": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783528046,
+        "narHash": "sha256-vhUb7UCAV2/qSHhC34MTdKSzwIFe+TInEVs0vWZ2RuU=",
+        "owner": "dagleaves",
+        "repo": "workz",
+        "rev": "d0d835ab78972ce78f7ed0995cd6dd080802c674",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dagleaves",
+        "repo": "workz",
         "type": "github"
       }
     },

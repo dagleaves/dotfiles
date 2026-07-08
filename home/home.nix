@@ -47,6 +47,9 @@ in
 
     # terminal multiplexer, not in nixpkgs, packaged by its own flake
     inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # environment engine for agent worktrees, not in nixpkgs, packaged by its own flake
+    inputs.workz.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionPath = [

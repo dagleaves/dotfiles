@@ -28,9 +28,15 @@
       url = "github:ogulcancelik/herdr/v0.7.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # environment engine for agent worktrees - not in nixpkgs, packaged by its own flake
+    workz = {
+      url = "github:dagleaves/workz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse, herdr }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse, herdr, workz }:
     let
       system = "x86_64-linux";
 
