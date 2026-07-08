@@ -21,6 +21,7 @@ in
     git
     gh
     gnumake
+    unzip
     uv
     nodejs_24
     yarn
@@ -60,6 +61,10 @@ in
     # home.file, so prevent home-manager's own generated init.lua (which
     # only disables unused providers) from colliding with it.
     initLua = lib.mkForce "";
+    # Expose gcc to neovim for nvim-treesitter
+    extraPackages = with pkgs; [
+      gcc
+    ];
   };
 
   programs.fzf = {
