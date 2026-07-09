@@ -28,7 +28,8 @@
       }
     ]
   },
-  "model": "claude-fable-5[1m]",
+  "fallbackModel": ["opus", "sonnet"],
+  "model": "best",
   "statusLine": {
     "command": "bash ~/.claude/statusline-command.sh",
     "type": "command"

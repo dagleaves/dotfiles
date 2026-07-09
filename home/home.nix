@@ -241,6 +241,8 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/settings.json";
   home.file.".claude/statusline-command.sh".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/statusline-command.sh";
+  home.file.".claude/agents".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/agents";
 
   # Neovim config, edited in place: the whole directory lives in this repo.
   home.file.".config/nvim".source =
@@ -251,9 +253,11 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
 
   # Shared agent instructions, edited in place: one file in the repo, symlinked
-  # into every agent CLI's expected location.
+  # into every agent CLI's expected location. Claude Code gets its own file
+  # that @imports the shared one plus Claude-only orchestration policy
+  # (pilotfish) that would confuse the other CLIs.
   home.file.".claude/CLAUDE.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/claude/CLAUDE.md";
   home.file.".codex/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
