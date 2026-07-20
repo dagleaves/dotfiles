@@ -71,6 +71,7 @@ in
     extraPackages = with pkgs; [
       gcc
     ];
+    withPython3 = true;
   };
 
   programs.fzf = {
