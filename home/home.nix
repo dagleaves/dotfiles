@@ -23,6 +23,7 @@ in
     gnumake
     unzip
     uv
+    ruff
     nodejs_24
     yarn
     pnpm
