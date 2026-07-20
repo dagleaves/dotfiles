@@ -33,6 +33,24 @@ in
     ffmpeg
     claude-code
 
+    # formatter / linters
+    stylua                 # lua format (base LazyVim)
+    markdownlint-cli2      # markdown lint + fix
+    markdown-toc           # markdown TOC
+    nixfmt-rfc-style       # nix format (provides the `nixfmt` binary the extra calls)
+    hadolint               # dockerfile lint
+    ansible-lint           # ansible lint
+    sqlfluff               # sql lint + format (the sql extra uses this for both)
+
+    gofumpt                # go format
+    gotools                # provides goimports
+    golangci-lint          # go lint
+
+    go                     # gopls and the go toolchain need the compiler present
+    terraform              # `terraform fmt` — unfree, see note
+
+    tree-sitter            # builds TS parsers
+
     # networking / misc
     nmap
     traceroute
@@ -69,6 +87,29 @@ in
     initLua = lib.mkForce "";
     # Expose gcc to neovim for nvim-treesitter
     extraPackages = with pkgs; [
+      lua-language-server               # base LazyVim (its own Lua config)
+
+      pyright                           # python  (extra's default LSP)
+
+      vtsls                             # typescript
+      biome                             # typescript.biome — LSP + formatter for JS/TS/JSON
+
+      vscode-langservers-extracted      # json (jsonls)
+      marksman                          # markdown
+      nil                               # nix
+      taplo                             # toml
+      yaml-language-server              # yaml (+ GitHub Actions via SchemaStore)
+      tailwindcss-language-server       # tailwind
+      astro-language-server             # astro
+      ansible-language-server           # ansible
+
+      dockerfile-language-server-nodejs # docker
+      docker-compose-language-service   # docker
+
+      gopls                             # go
+      terraform-ls                      # terraform
+      tflint                            # terraform (runs as an LSP too)
+
       gcc
     ];
     withPython3 = true;
