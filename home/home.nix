@@ -27,6 +27,8 @@ in
     yarn
     pnpm
     bun
+    cargo
+    rustc
     ffmpeg
     claude-code
 
