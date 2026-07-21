@@ -79,9 +79,15 @@ in
     inputs.workz.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
+  home.sessionVariables = {
+    ANDROID_HOME = "$HOME/Android/Sdk";
+  };
+
   home.sessionPath = [
     "$HOME/bin"
     "$HOME/.local/bin"
+    "$HOME/Android/Sdk/emulator"
+    "$HOME/Android/Sdk/platform-tools"
   ];
 
   programs.neovim = {
