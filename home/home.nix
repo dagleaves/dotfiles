@@ -1,7 +1,13 @@
 # User-level config shared by every machine (NixOS desktop/laptop and WSL).
 # On NixOS this is loaded as a home-manager module from flake.nix; on WSL it
 # is applied standalone with `home-manager switch`.
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   dotfiles = "${config.home.homeDirectory}/dotfiles";
@@ -34,22 +40,22 @@ in
     claude-code
 
     # formatter / linters
-    stylua                 # lua format (base LazyVim)
-    markdownlint-cli2      # markdown lint + fix
-    markdown-toc           # markdown TOC
-    nixfmt-rfc-style       # nix format (provides the `nixfmt` binary the extra calls)
-    hadolint               # dockerfile lint
-    ansible-lint           # ansible lint
-    sqlfluff               # sql lint + format (the sql extra uses this for both)
+    stylua # lua format (base LazyVim)
+    markdownlint-cli2 # markdown lint + fix
+    markdown-toc # markdown TOC
+    nixfmt # nix format (provides the `nixfmt` binary the extra calls)
+    hadolint # dockerfile lint
+    ansible-lint # ansible lint
+    sqlfluff # sql lint + format (the sql extra uses this for both)
 
-    gofumpt                # go format
-    gotools                # provides goimports
-    golangci-lint          # go lint
+    gofumpt # go format
+    gotools # provides goimports
+    golangci-lint # go lint
 
-    go                     # gopls and the go toolchain need the compiler present
-    terraform              # `terraform fmt` — unfree, see note
+    go # gopls and the go toolchain need the compiler present
+    terraform # `terraform fmt` — unfree, see note
 
-    tree-sitter            # builds TS parsers
+    tree-sitter # builds TS parsers
 
     # networking / misc
     nmap
@@ -87,28 +93,28 @@ in
     initLua = lib.mkForce "";
     # Expose gcc to neovim for nvim-treesitter
     extraPackages = with pkgs; [
-      lua-language-server               # base LazyVim (its own Lua config)
+      lua-language-server # base LazyVim (its own Lua config)
 
-      pyright                           # python  (extra's default LSP)
+      pyright # python  (extra's default LSP)
 
-      vtsls                             # typescript
-      biome                             # typescript.biome — LSP + formatter for JS/TS/JSON
+      vtsls # typescript
+      biome # typescript.biome — LSP + formatter for JS/TS/JSON
 
-      vscode-langservers-extracted      # json (jsonls)
-      marksman                          # markdown
-      nil                               # nix
-      taplo                             # toml
-      yaml-language-server              # yaml (+ GitHub Actions via SchemaStore)
-      tailwindcss-language-server       # tailwind
-      astro-language-server             # astro
-      ansible-language-server           # ansible
+      vscode-langservers-extracted # json (jsonls)
+      marksman # markdown
+      nil # nix
+      taplo # toml
+      yaml-language-server # yaml (+ GitHub Actions via SchemaStore)
+      tailwindcss-language-server # tailwind
+      astro-language-server # astro
+      ansible-language-server # ansible
 
-      dockerfile-language-server-nodejs # docker
-      docker-compose-language-service   # docker
+      dockerfile-language-server # docker
+      docker-compose-language-service # docker
 
-      gopls                             # go
-      terraform-ls                      # terraform
-      tflint                            # terraform (runs as an LSP too)
+      gopls # go
+      terraform-ls # terraform
+      tflint # terraform (runs as an LSP too)
 
       gcc
     ];
@@ -220,7 +226,7 @@ in
   programs.tmux = {
     enable = true;
     prefix = "C-a";
-    baseIndex = 1;          # windows and panes start at 1, not 0
+    baseIndex = 1; # windows and panes start at 1, not 0
     keyMode = "vi";
     mouse = true;
     historyLimit = 100000;
@@ -270,8 +276,7 @@ in
 
   # Edit-in-place: the real file stays in this repo, ~/.p10k.zsh just points
   # at it (`p10k configure` writes straight through the symlink).
-  home.file.".p10k.zsh".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/p10k.zsh";
+  home.file.".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/p10k.zsh";
 
   # WezTerm reads ~/.wezterm.lua on NixOS. On WSL the terminal runs on the
   # Windows side, which can't follow this symlink - rebuild.sh copies the
