@@ -38,6 +38,8 @@
     "beekeeper-studio-5.3.4"
   ];
 
+  nixpkgs.config.android_sdk.accept_license = true;
+
   environment.systemPackages = with pkgs; [
     wezterm
     kdePackages.kate
