@@ -46,5 +46,6 @@
     mqtt-explorer
     google-chrome
     beekeeper-studio
+    android-studio
   ];
 }
