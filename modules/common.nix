@@ -43,6 +43,7 @@
       "wheel"
       "docker"
       "dialout"
+      "kvm"
     ];
   };
 
@@ -52,6 +53,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   virtualisation.docker.enable = true;
+  virtualisation.kvmgt.enable = true;
 
   # Pin container DNS to Tailscale MagicDNS. Without this, containers
   # snapshot /etc/resolv.conf at start; on boot Docker races tailscaled and
