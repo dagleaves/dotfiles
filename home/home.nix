@@ -38,6 +38,7 @@ in
     rustc
     ffmpeg
     claude-code
+    awscli2
 
     # formatter / linters
     stylua # lua format (base LazyVim)
