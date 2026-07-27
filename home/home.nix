@@ -22,6 +22,7 @@ in
     jq
     lazygit
     tmux
+    dnsutils
 
     # dev toolchain
     git
