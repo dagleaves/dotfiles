@@ -25,7 +25,10 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/ec86cfaf-d5a4-4070-a777-cbf09a1deacd"; }
+    [ { device = "/dev/disk/by-partuuid/9918b0b8-d16e-42a7-af07-3535fe33a504";
+        # Fresh key each boot; hibernation is disabled on this host anyway.
+        randomEncryption.enable = true;
+      }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
