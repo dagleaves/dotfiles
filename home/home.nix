@@ -40,6 +40,8 @@ in
     ffmpeg
     claude-code
     awscli2
+    binwalk
+    openssl
 
     # formatter / linters
     stylua # lua format (base LazyVim)
