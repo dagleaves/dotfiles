@@ -34,9 +34,15 @@
       url = "github:dagleaves/workz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Secure Boot for NixOS - signs UKIs with the sbctl keys (desktop only)
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse, herdr, workz }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse, herdr, workz, lanzaboote }:
     let
       system = "x86_64-linux";
 
