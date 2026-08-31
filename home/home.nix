@@ -23,6 +23,7 @@ in
     lazygit
     tmux
     dnsutils
+    pandoc
 
     # dev toolchain
     git
