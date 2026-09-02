@@ -285,6 +285,12 @@ in
     '';
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    # zsh integration is enabled automatically because programs.zsh is on
+  };
+
   # Edit-in-place: the real file stays in this repo, ~/.p10k.zsh just points
   # at it (`p10k configure` writes straight through the symlink).
   home.file.".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/p10k.zsh";
