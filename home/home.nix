@@ -288,6 +288,9 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    config.whitelist = {
+      prefix = [ "/home/danielg/development" ];
+    };
     # zsh integration is enabled automatically because programs.zsh is on
   };
 
