@@ -303,7 +303,10 @@ in
     enable = true;
     nix-direnv.enable = true;
     config.whitelist = {
-      prefix = [ "/home/danielg/development" ];
+      prefix = [
+        "${config.home.homeDirectory}/development"
+        "${config.home.homeDirectory}/github"
+      ];
     };
     # zsh integration is enabled automatically because programs.zsh is on
   };
