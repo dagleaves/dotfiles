@@ -27,7 +27,6 @@ in
 
     # dev toolchain
     git
-    gh
     gnumake
     unzip
     uv
@@ -39,7 +38,6 @@ in
     cargo
     rustc
     ffmpeg
-    claude-code
     awscli2
     binwalk
     openssl
@@ -156,10 +154,26 @@ in
         rn = "rename";
       };
       init.defaultBranch = "main";
-      credential.helper = "store";
-      credential."https://github.com".helper = "!gh auth git-credential";
-      credential."https://gist.github.com".helper = "!gh auth git-credential";
     };
+  };
+
+  programs.ssh = {
+    enable = true;
+    # The old implicit defaults only restated OpenSSH built-in defaults.
+    enableDefaultConfig = false;
+    settings."github.com" = {
+      User = "git";
+      IdentityFile = "~/.ssh/id_ed25519";
+      IdentitiesOnly = true;
+    };
+    settings."*" = {
+      AddKeysToAgent = "yes";
+    };
+  };
+
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "ssh";
   };
 
   programs.zsh = {
