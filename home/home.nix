@@ -306,6 +306,7 @@ in
       prefix = [
         "${config.home.homeDirectory}/development"
         "${config.home.homeDirectory}/github"
+        "${config.home.homeDirectory}/.herdr/worktrees"
       ];
     };
     # zsh integration is enabled automatically because programs.zsh is on
