@@ -24,6 +24,7 @@ in
     tmux
     dnsutils
     pandoc
+    rclone
 
     # dev toolchain
     git
