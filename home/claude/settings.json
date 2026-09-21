@@ -28,8 +28,12 @@
       }
     ]
   },
-  "fallbackModel": ["opus", "sonnet"],
+  "fallbackModel": [
+    "opus",
+    "sonnet"
+  ],
   "model": "best",
+  "effortLevel": "medium",
   "statusLine": {
     "command": "bash ~/.claude/statusline-command.sh",
     "type": "command"
