@@ -38,5 +38,10 @@
     "command": "bash ~/.claude/statusline-command.sh",
     "type": "command"
   },
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "tui": "fullscreen"
 }
