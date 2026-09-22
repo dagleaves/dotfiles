@@ -1,20 +1,21 @@
 {
-  "autoCompactEnabled": false,
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
+  "model": "best",
+  "effortLevel": "medium",
+  "fallbackModel": [
+    "opus",
+    "sonnet"
+  ],
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
-            "command": "bash '/home/danielg/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "timeout": 10
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "WorktreeCreate": [
@@ -22,26 +23,26 @@
         "hooks": [
           {
             "type": "command",
-            "command": "workz sync --isolated --quiet"
+            "command": "workz claude-hook --isolated",
+            "timeout": 600
           }
         ]
       }
     ]
   },
-  "fallbackModel": [
-    "opus",
-    "sonnet"
-  ],
-  "model": "best",
-  "effortLevel": "medium",
   "statusLine": {
-    "command": "bash ~/.claude/statusline-command.sh",
-    "type": "command"
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
   },
   "attribution": {
     "commit": "",
     "pr": "",
     "sessionUrl": false
   },
-  "tui": "fullscreen"
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "tui": "fullscreen",
+  "autoCompactEnabled": false
 }
