@@ -22,6 +22,13 @@
   };
   environment.systemPackages = [ pkgs.sbctl ];
 
+  # OBS with CUDA so NVENC hardware encoding works on the nvidia GPU.
+  programs.obs-studio = {
+    enable = true;
+    package = pkgs.obs-studio.override { cudaSupport = true; };
+    enableVirtualCamera = true;
+  };
+
   # systemd-based initrd - required for TPM2 LUKS unlock
   boot.initrd.systemd.enable = true;
 
