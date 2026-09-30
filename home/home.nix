@@ -155,6 +155,7 @@ in
         rn = "rename";
       };
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 
