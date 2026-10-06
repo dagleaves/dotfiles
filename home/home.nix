@@ -31,6 +31,7 @@ in
     gnumake
     unzip
     uv
+    python3 # global interpreter for ad-hoc scripts; projects still use uv
     ruff
     nodejs_24
     yarn
