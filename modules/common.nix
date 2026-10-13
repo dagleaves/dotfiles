@@ -98,6 +98,8 @@
       interval = "Sun *-*-* 04:00:00";
     };
   };
+  # Run a missed scan on next boot (laptop may be off at 04:00 Sunday).
+  systemd.timers.clamdscan.timerConfig.Persistent = true;
 
   # Firewall on. Default policy drops inbound except loopback, established
   # connections and ICMP. Docker-published ports (-p) bypass this chain via
