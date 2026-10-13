@@ -85,5 +85,37 @@
     glibc
   ];
 
-  networking.firewall.enable = false;
+  # Antivirus: clamd daemon, freshclam signature updates, and a weekly
+  # clamdscan of the module's default directories (/home, /var/lib, /tmp,
+  # /etc, /var/tmp). Weekly rather than the daily default because the root
+  # disk holds hundreds of GB of ML data and the scan uses up to 10 cores.
+  # Results: journalctl -u clamdscan; the unit exits non-zero on a hit.
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+    scanner = {
+      enable = true;
+      interval = "Sun *-*-* 04:00:00";
+    };
+  };
+  # Run a missed scan on next boot (laptop may be off at 04:00 Sunday).
+  systemd.timers.clamdscan.timerConfig.Persistent = true;
+
+  # Firewall on. Default policy drops inbound except loopback, established
+  # connections and ICMP. Docker-published ports (-p) bypass this chain via
+  # DNAT/FORWARD, so they are neither protected nor affected by it.
+  networking.firewall = {
+    enable = true;
+    # Tailnet peers reach host-network services (go2rtc, dev servers); access
+    # is governed by Tailscale ACLs.
+    trustedInterfaces = [ "tailscale0" ];
+    # Containers reach host services via host.docker.internal / the bridge
+    # gateway, so accept from docker0 and every compose bridge (br-*). The
+    # trailing "+" is iptables' prefix wildcard. This keeps container->host
+    # traffic working while still blocking the LAN.
+    extraCommands = ''
+      ip46tables -A nixos-fw -i docker0 -j nixos-fw-accept
+      ip46tables -A nixos-fw -i br-+ -j nixos-fw-accept
+    '';
+  };
 }
