@@ -85,5 +85,29 @@
     glibc
   ];
 
-  networking.firewall.enable = false;
+  # Antivirus: clamd daemon plus freshclam signature updates. No scheduled
+  # or on-access scan yet (services.clamav.scanner / daemon.settings);
+  # scans are run on demand with clamdscan.
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+  };
+
+  # Firewall on. Default policy drops inbound except loopback, established
+  # connections and ICMP. Docker-published ports (-p) bypass this chain via
+  # DNAT/FORWARD, so they are neither protected nor affected by it.
+  networking.firewall = {
+    enable = true;
+    # Tailnet peers reach host-network services (go2rtc, dev servers); access
+    # is governed by Tailscale ACLs.
+    trustedInterfaces = [ "tailscale0" ];
+    # Containers reach host services via host.docker.internal / the bridge
+    # gateway, so accept from docker0 and every compose bridge (br-*). The
+    # trailing "+" is iptables' prefix wildcard. This keeps container->host
+    # traffic working while still blocking the LAN.
+    extraCommands = ''
+      ip46tables -A nixos-fw -i docker0 -j nixos-fw-accept
+      ip46tables -A nixos-fw -i br-+ -j nixos-fw-accept
+    '';
+  };
 }
