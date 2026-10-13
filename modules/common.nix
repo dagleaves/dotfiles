@@ -85,12 +85,18 @@
     glibc
   ];
 
-  # Antivirus: clamd daemon plus freshclam signature updates. No scheduled
-  # or on-access scan yet (services.clamav.scanner / daemon.settings);
-  # scans are run on demand with clamdscan.
+  # Antivirus: clamd daemon, freshclam signature updates, and a weekly
+  # clamdscan of the module's default directories (/home, /var/lib, /tmp,
+  # /etc, /var/tmp). Weekly rather than the daily default because the root
+  # disk holds hundreds of GB of ML data and the scan uses up to 10 cores.
+  # Results: journalctl -u clamdscan; the unit exits non-zero on a hit.
   services.clamav = {
     daemon.enable = true;
     updater.enable = true;
+    scanner = {
+      enable = true;
+      interval = "Sun *-*-* 04:00:00";
+    };
   };
 
   # Firewall on. Default policy drops inbound except loopback, established
