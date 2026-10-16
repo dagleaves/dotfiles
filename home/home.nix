@@ -39,6 +39,7 @@ in
     bun
     cargo
     rustc
+    gcc # C toolchain; provides `cc` so cargo/rustc and native builds can link
     ffmpeg
     awscli2
     binwalk
