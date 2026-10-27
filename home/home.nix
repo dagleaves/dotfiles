@@ -33,7 +33,7 @@ in
     uv
     python3 # global interpreter for ad-hoc scripts; projects still use uv
     ruff
-    nodejs_24
+    nodejs_26
     yarn
     pnpm
     bun
