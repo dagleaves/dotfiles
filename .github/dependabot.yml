@@ -1,0 +1,9 @@
+# Dependabot has no Nix ecosystem, so flake.lock is handled by
+# .github/workflows/update-flake-lock.yml. This only keeps the action
+# versions in the workflows current.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
