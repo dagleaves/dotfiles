@@ -432,8 +432,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "treehouse": "treehouse",
-        "workz": "workz",
-        "zsh-patina": "zsh-patina"
+        "workz": "workz"
       }
     },
     "rust-overlay": {
@@ -511,26 +510,6 @@
       "original": {
         "owner": "dagleaves",
         "repo": "workz",
-        "type": "github"
-      }
-    },
-    "zsh-patina": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791490843,
-        "narHash": "sha256-D/6RWSClXvkfOFp6mDegig0O+E+V4sSP6nZgkNlLwcg=",
-        "owner": "michel-kraemer",
-        "repo": "zsh-patina",
-        "rev": "eb4fcda6064612c37d588cd252bcb6fe7fc9bc36",
-        "type": "github"
-      },
-      "original": {
-        "owner": "michel-kraemer",
-        "repo": "zsh-patina",
         "type": "github"
       }
     }

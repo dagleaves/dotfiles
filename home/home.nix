@@ -71,9 +71,8 @@ in
     # so `home-manager switch` works on WSL after bootstrap
     home-manager
 
-    # zsh prompt plugin, from its own flake (not in nixpkgs); activated in
-    # zsh initContent below
-    inputs.zsh-patina.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # zsh prompt plugin; activated in zsh initContent below
+    zsh-patina
 
     # not in nixpkgs, packaged by its own flake
     inputs.treehouse.packages.${pkgs.stdenv.hostPlatform.system}.default
