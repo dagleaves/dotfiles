@@ -25,6 +25,7 @@ in
     dnsutils
     pandoc
     rclone
+    ncdu
 
     # dev toolchain
     git
