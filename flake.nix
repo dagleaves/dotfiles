@@ -12,12 +12,6 @@
     # Determinate installer used on WSL / other distros.
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    # zsh prompt plugin - not in nixpkgs, packaged by its own flake
-    zsh-patina = {
-      url = "github:michel-kraemer/zsh-patina";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     treehouse = {
       url = "github:kunchenguid/treehouse";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +36,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, zsh-patina, treehouse, herdr, workz, lanzaboote }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, determinate, treehouse, herdr, workz, lanzaboote }:
     let
       system = "x86_64-linux";
 
