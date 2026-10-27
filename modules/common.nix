@@ -7,6 +7,15 @@
     "flakes"
   ];
 
+  # Keep the store from growing without bound: drop generations older than
+  # 30 days weekly and hard-link identical store files.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.settings.auto-optimise-store = true;
+
   nixpkgs.config.allowUnfree = true;
 
   # Bootloader.
