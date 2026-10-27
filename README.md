@@ -21,6 +21,8 @@ configured the same way every time.
 - `home/claude/` — Claude Code `settings.json` and `statusline-command.sh`; `~/.claude/settings.json` and `~/.claude/statusline-command.sh` symlink into the repo, so changes made through Claude Code land here too
 - `bootstrap.sh` — first-time setup on a fresh machine
 - `rebuild.sh` — re-apply after any edit
+- `check.sh` — evaluate every target without building; CI runs it on every PR
+- `.github/workflows/` — `check.yml` runs `check.sh` on PRs and pushes to `main`; `update-flake-lock.yml` runs `nix flake update` every Monday, checks it, and opens a PR
 
 ## Fresh-machine setup
 
@@ -59,6 +61,9 @@ This also switches the machine onto Determinate Nix via the
 ### Validate without applying
 
 ```sh
+# All targets at once (what CI runs)
+./check.sh
+
 # WSL / home-manager config
 nix build ~/dotfiles#homeConfigurations.'"dgleaves@wsl"'.activationPackage --dry-run
 
