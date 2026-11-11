@@ -45,6 +45,7 @@
     kdePackages.kate
     bruno
     vlc
+    openshot-qt
     mqtt-explorer
     google-chrome
     beekeeper-studio
