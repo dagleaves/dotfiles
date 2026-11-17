@@ -31,7 +31,7 @@ in
     git
     gnumake
     unzip
-    uv
+    unstable.uv # stable branch lags far behind upstream
     python3 # global interpreter for ad-hoc scripts; projects still use uv
     ruff
     nodejs_26
